@@ -1,0 +1,13 @@
+{
+	"name": "signaturegenerator_2",
+	"version": "1.0.0",
+	"description": "Signature Generator for Bravante using Node.js and Express Framework  ", 
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"author": "MariathDev",
+	"dependencies": {
+		"express": "^4.19.2"
+	}
+}
