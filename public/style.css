@@ -1,0 +1,122 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: "Open Sans", sans-serif;
+	background-color: #d7e7cb;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+#globalContainer {
+	padding: 10px 0 36px 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#mainContainer {
+	background-color: #fff;
+	width: 70%;
+	height: 65%;
+	border-radius: 30px;
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+}
+.formSide {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.headerImage {
+	display: flex;
+	flex-direction: column;
+	span {
+		color: #ccc;
+		font-size: 12px;
+		margin-top: -20px;
+	}
+}
+#globalContainer h1 {
+	text-shadow: 1px 2px #333;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.formTable {
+	font-family: "Open Sans";
+	color: #393939;
+	border-collapse: collapse;
+	margin-top: 40px;
+}
+.formTable td {
+	padding: 2px 5px;
+}
+.caption {
+	font-size: 14px;
+	color: #393939;
+}
+.field {
+	width: 280px;
+	height: 35px;
+	font-size: 12px;
+	padding-left: 10px;
+	border-radius: 12px;
+	border: 1px solid #ccc;
+	margin-bottom: 8px;
+}
+.buttonContainer {
+	display: flex;
+	justify-content: center;
+	margin-right: 10px;
+	margin-top: 2.4vh;
+}
+#downloadButton {
+	color: white;
+	border: 1px solid #b1b1b1;
+	border-radius: 40px;
+	font-size: 16px;
+	cursor: pointer;
+	padding: 25px 15px 15px 15px;
+
+}
+
+#downloadButton img {
+	text-align: center;
+	width: 25px;
+}
+.bravanteLogo {
+	width: 180px;
+	height: 100px;
+}
+.ImageSide {
+	width: 85%;
+	img{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+/* Nome: lucida sans 11, #FFD796
+Setor/Cargo: lucida sans 11, #FFFFFF
+
+e-mail: lucida sans 10, #FFFFFF
+telefone: lucida sans 10, #FFFFFF */
+
+/* 
+#629676
+#F7C66B
+#FCD798
+#6F9685
+*/
