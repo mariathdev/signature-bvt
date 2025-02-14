@@ -11,6 +11,7 @@ const PORT = 3300
 
 // 1. Uses
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use(express.static("public"));
@@ -29,8 +30,19 @@ app.post("/signaturegenerator", upload.none(), (req, res) => {
 		console.error("Erro ao executar o script Python:", err);
 		res.status(500).send("Erro no servidor");
 	});
-	res.setHeader("Content-Type", "text/plain");
-	pythonProcess.stdout.pipe(res);
+	let imageBuffer = Buffer.alloc(0);
+	pythonProcess.stdout.on('data', (data) => {
+		imageBuffer = Buffer.concat([imageBuffer, data]);
+	});
+	pythonProcess.on('close', (code) => {
+		if (code === 0) {
+			res.setHeader('Content-Disposition', 'attachment; filename="signature.png"');
+			res.setHeader('Content-Type', 'image/png');
+			res.send(imageBuffer);
+		} else {
+			res.status(500).send('Erro ao gerar a imagem');
+		}
+	})
 });
 
 // 4. Start Server
