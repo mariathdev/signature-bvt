@@ -2,11 +2,15 @@ console.log("START -> server.js Initialization");
 
 // 0. Initialization
 const express = require('express');
+const	multer = require("multer");
+const	{ spawn } = require("child_process");
 const path = require('path');
 const app = express();
+const upload = multer();
 const PORT = 3300
 
 // 1. Uses
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use(express.static("public"));
@@ -18,25 +22,17 @@ app.get('/', (req, res) => {
 
 // 3. API
 
-/*
+app.post("/signaturegenerator", upload.none(), (req, res) => {
+	const	{signName, signSector, signEmail, signPhone} = req.body;
+	const pythonProcess = spawn("python3", ["signatureGenerator.py", signName, signSector, signEmail, signPhone]);
+	pythonProcess.on("error", (err) => {
+		console.error("Erro ao executar o script Python:", err);
+		res.status(500).send("Erro no servidor");
+	});
+	res.setHeader("Content-Type", "text/plain");
+	pythonProcess.stdout.pipe(res);
+});
 
-const signatureGenerator = () => {
-	const pythonProcess = spawn("python3", ["signatureGenerator.py", inputFields[0], inputFields[1], inputFields[2], inputFields[3]]);
-	let imageData = Buffer.alloc(0);
-	pythonProcess.stdout.on("data", (data) => {
-		imageData = Buffer.concat([imageData, data]);
-	});
-	pythonProcess.on("close", () => {
-		callback(null, imageData);
-	});
-	pythonProcess.stderr.on("data", (data) => {
-		console.error("Erro no Python:", data.toString());
-		callback(new Error("Erro ao gerar a imagem"));
-	});
-};
-
-signatureGenerator("Mariacci", "Dev", "Mariacci@bravante.com.br", "14125116114")
-*/
 // 4. Start Server
 app.listen(PORT, '0.0.0.0', () => {
 	console.log(`Main Server running at port: ${PORT}`);

@@ -2,7 +2,7 @@ console.log("Start")
 
 const inputFields = document.querySelectorAll('input');
 inputFields.forEach((inputField, index) => {
-	inputField.addEventListener("keydown", function (event) {
+	inputField.addEvenstListener("keydown", function (event) {
 		if (event.key == "Enter") {
 			event.preventDefault();
 			const nextTexinputField = inputFields[index + 1];
