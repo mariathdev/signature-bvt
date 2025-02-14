@@ -24,8 +24,8 @@ const formHasErrors = () => {
 		alert("O nome deve ter 20 caracteres ou menos.");	
 		return (true);
 	}
-	if (!inputFields[2].value.includes("@bravante.com.br")) {
-		alert("O email não é @bravante.com.br");	
+	if (!(inputFields[2].value.includes("@bravante.com.br") || inputFields[2].value.includes("@rrcrobotica.com.br"))) {
+		alert("O email não é @bravante.com.br ou @rrcrobotica.com.br");	
 		return (true);
 	}
 	return (false);
