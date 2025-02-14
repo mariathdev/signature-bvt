@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
 
 // 3. API
 
+/*
+
 const signatureGenerator = () => {
 	const pythonProcess = spawn("python3", ["signatureGenerator.py", inputFields[0], inputFields[1], inputFields[2], inputFields[3]]);
 	let imageData = Buffer.alloc(0);
@@ -34,7 +36,7 @@ const signatureGenerator = () => {
 };
 
 signatureGenerator("Mariacci", "Dev", "Mariacci@bravante.com.br", "14125116114")
-
+*/
 // 4. Start Server
 app.listen(PORT, '0.0.0.0', () => {
 	console.log(`Main Server running at port: ${PORT}`);
